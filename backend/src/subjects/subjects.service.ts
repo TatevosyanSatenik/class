@@ -1,0 +1,70 @@
+import { Injectable } from '@nestjs/common';
+import { Subject, Topic } from '../types';
+
+@Injectable()
+export class SubjectsService {
+  private subjects: Subject[] = [
+    {
+      id: '1',
+      name: 'Ծրագրավորման ոճեր և մեթոդներ',
+      description: 'Study of computers and computational systems',
+      topics: [
+        { id: '1', name: 'Ինկապսուլյացիա', description: 'Study of algorithms and their complexity' },
+        { id: '2', name: 'Վեբի հիմունքներ', description: 'Study of data organization and storage' },
+        { id: '3', name: 'Ինդեքսավորում', description: 'Study of programming languages and paradigms' },
+        { id: '4', name: 'Միկրոտնտեսագիտություն', description: 'Study of programming languages and paradigms' },
+
+      ],
+    },
+    {
+      id: '2',
+      name: 'WEB տեխնոլոգիաներ',
+      description: 'Study of numbers, quantities, and shapes',
+      topics: [
+        { id: '1', name: 'Ինկապսուլյացիա ', description: 'Study of mathematical symbols and rules' },
+        { id: '2', name: 'Վեբի հիմունքներ', description: 'Study of continuous change' },
+        { id: '3', name: 'Ինդեքսավորում', description: 'Study of shapes and spatial relationships' },
+        { id: '4', name: 'Միկրոտնտեսագիտություն', description: 'Study of shapes and spatial relationships' },
+
+      ],
+    },
+	{
+		id: '3',
+		name: 'Որոնման տեղեկատվական համակարգեր',
+		description: 'Study of numbers, quantities, and shapes',
+		topics: [
+		  { id: '1', name: 'Ինկապսուլյացիա ', description: 'Study of mathematical symbols and rules' },
+		  { id: '2', name: 'Վեբի հիմունքներ', description: 'Study of continuous change' },
+		  { id: '3', name: 'Ինդեքսավորում', description: 'Study of shapes and spatial relationships' },
+		  { id: '4', name: 'Միկրոտնտեսագիտություն', description: 'Study of shapes and spatial relationships' },
+  
+		],
+	  },
+	  {
+		id: '4',
+		name: 'Տնտեսագիտություն',
+		description: 'Study of numbers, quantities, and shapes',
+		topics: [
+		  { id: '1', name: 'Ինկապսուլյացիա ', description: 'Study of mathematical symbols and rules' },
+		  { id: '2', name: 'Վեբի հիմունքներ', description: 'Study of continuous change' },
+		  { id: '3', name: 'Ինդեքսավորում', description: 'Study of shapes and spatial relationships' },
+		  { id: '4', name: 'Միկրոտնտեսագիտություն', description: 'Study of shapes and spatial relationships' },
+  
+		],
+	  },
+
+  ];
+
+  findAll(): Subject[] {
+    return this.subjects;
+  }
+
+  findOne(id: string): Subject | undefined {
+    return this.subjects.find(subject => subject.id === id);
+  }
+
+  findTopicsBySubjectId(subjectId: string): Topic[] {
+    const subject = this.subjects.find(s => s.id === subjectId);
+    return subject?.topics || [];
+  }
+} 
